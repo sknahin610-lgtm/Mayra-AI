@@ -1,5 +1,4 @@
 
-
 name: Build Mayra AI APK
 
 on:
@@ -38,3 +37,4 @@ jobs:
         with:
           name: Mayra-AI-APK
           path: MayraAI/app/build/outputs/apk/debug/*.apk
+
