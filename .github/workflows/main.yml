@@ -1,4 +1,5 @@
 
+
 name: Build Mayra AI APK
 
 on:
@@ -14,6 +15,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Extract Android project
+        run: unzip -q MayraAI-Android-Project.zip -d .
+
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
@@ -26,10 +30,11 @@ jobs:
           gradle-version: '8.9'
 
       - name: Build APK
+        working-directory: MayraAI
         run: gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Mayra-AI-APK
-          path: app/build/outputs/apk/debug/*.apk
+          path: MayraAI/app/build/outputs/apk/debug/*.apk
